@@ -30,7 +30,8 @@
         android:ems="10"
         android:id="@+id/inputPercentage"
         android:layout_below="@+id/inputBill"
-        android:layout_alignLeft="@+id/inputBill" />
+        android:layout_alignLeft="@+id/inputBill"
+        android:layout_alignStart="@+id/inputBill"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -77,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
-        android:textApparence="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/txtTip"
         android:layout_below="@+id/separator"
         android:visibility="gone"
