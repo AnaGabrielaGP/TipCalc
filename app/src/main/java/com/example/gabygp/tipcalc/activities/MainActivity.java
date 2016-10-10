@@ -1,4 +1,4 @@
-package com.example.gabygp.tipcalc;
+package com.example.gabygp.tipcalc.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,14 +15,17 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.gabygp.tipcalc.R;
+import com.example.gabygp.tipcalc.TipCalcApp;
+import com.example.gabygp.tipcalc.fragments.TipHistoryListFragment;
+import com.example.gabygp.tipcalc.fragments.TipHistoryListFragmentListener;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final static int TIP_STEP_CHANGE = 1;
-    private final static int DEFAULT_TIP_CHANGE = 10;
     @Bind(R.id.inputBill)
     EditText inputBill;
     @Bind(R.id.btnSubmit)
@@ -38,11 +41,22 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.txtTip)
     TextView txtTip;
 
+
+    private TipHistoryListFragmentListener fragmentListener;
+
+    private final static int TIP_STEP_CHANGE = 1;
+    private final static int DEFAULT_TIP_CHANGE = 10;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        TipHistoryListFragment fragment = (TipHistoryListFragment)getSupportFragmentManager().findFragmentById(R.id.fragmentList);
+
+        fragment.setRetainInstance(true);
+        fragmentListener = (TipHistoryListFragmentListener)fragment;
     }
 
     @Override
@@ -72,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
             double tip = total * (tipPercentage / 100d);
 
             String strTip = String.format(getString(R.string.global_message_bill), tip);
+            fragmentListener.action(strTip);
+
             txtTip.setVisibility(View.VISIBLE);
             txtTip.setText(strTip);
         }
