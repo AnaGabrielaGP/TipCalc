@@ -19,6 +19,9 @@ import com.example.gabygp.tipcalc.R;
 import com.example.gabygp.tipcalc.TipCalcApp;
 import com.example.gabygp.tipcalc.fragments.TipHistoryListFragment;
 import com.example.gabygp.tipcalc.fragments.TipHistoryListFragmentListener;
+import com.example.gabygp.tipcalc.models.TipRecord;
+
+import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -83,10 +86,13 @@ public class MainActivity extends AppCompatActivity {
             double total = Double.parseDouble(strInputTotal);
             int tipPercentage = getTipPercentage();
 
-            double tip = total * (tipPercentage / 100d);
+            TipRecord record = new TipRecord();
+            record.setBill(total);
+            record.setTipPercentage(tipPercentage);
+            record.setTimestamp(new Date());
 
-            String strTip = String.format(getString(R.string.global_message_bill), tip);
-            fragmentListener.action(strTip);
+            String strTip = String.format(getString(R.string.global_message_bill), record.getTip());
+            fragmentListener.addToList(record);
 
             txtTip.setVisibility(View.VISIBLE);
             txtTip.setText(strTip);
