@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.example.gabygp.tipcalc.R;
+import com.example.gabygp.tipcalc.adapters.OnItemClickListener;
 import com.example.gabygp.tipcalc.adapters.TipAdapter;
 import com.example.gabygp.tipcalc.models.TipRecord;
 
@@ -22,7 +25,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TipHistoryListFragment extends Fragment implements TipHistoryListFragmentListener{
+public class TipHistoryListFragment extends Fragment implements TipHistoryListFragmentListener, OnItemClickListener {
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
 
@@ -61,7 +64,14 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
 
     private void initAdapter() {
         if(adapter == null){
-            adapter = new TipAdapter(getActivity().getApplicationContext(), new ArrayList<TipRecord>());
+            adapter = new TipAdapter(getActivity().getApplicationContext(), this) {
+            };
         }
+    }
+
+    @Override
+    public void onItemClick(TipRecord tipRecord) {
+        //TODO Implementar la logica para llamar a una actividad enviandole la información de la propina
+        Log.v("MENSAJE!!!!!", tipRecord.getDateFormated());
     }
 }
