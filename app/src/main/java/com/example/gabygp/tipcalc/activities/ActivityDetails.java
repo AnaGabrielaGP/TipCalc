@@ -14,6 +14,8 @@ import com.example.gabygp.tipcalc.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+
+
 public class ActivityDetails extends AppCompatActivity {
 
     @Bind(R.id.txtDateTime)
@@ -25,6 +27,10 @@ public class ActivityDetails extends AppCompatActivity {
     @Bind(R.id.activity_details)
     RelativeLayout activityDetails;
 
+    private String tipText;
+    private String billText;
+    private String dateText;
+
     public final static String BILL_MESSAGE = "me.tipcalc.billmessage";
     public final static String TIP_MESSAGE = "me.tipcalc.tipmessage";
     public final static String DATE_MESSAGE = "me.tipcalc.datemessage";
@@ -34,16 +40,18 @@ public class ActivityDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         ButterKnife.bind(this);
+
+        Intent intent = getIntent();
+
+
+        billText = getString(R.string.tipdetail_message_bill).concat(intent.getStringExtra(TipHistoryListFragment.BILL_MESSAGE));
+        tipText = getString(R.string.tipdetail_message_tip).concat(intent.getStringExtra(TipHistoryListFragment.TIP_MESSAGE));
+        dateText = getString(R.string.tipdetail_message_date).concat(intent.getStringExtra(TipHistoryListFragment.DATE_MESSAGE));
+
+        txtTotal.setText(billText);
+        txtTip.setText(tipText);
+        txtDateTime.setText(dateText);
     }
-
-    Intent intent = getIntent();
-    Bundle extras = intent.getExtras();
-
-    String totalSTxt = String.format(getString(R.string.tipdetail_message_bill), intent.getDoubleExtra(BILL_MESSAGE, 2d));
-    txtTotal.setText(totalSTxt);
-    String tipSTxt = String.format(getString(R.string.global_message_bill), intent.getDoubleExtra(TIP_MESSAGE, 2d));
-    txtTip.setText(tipSTxt);
-    txtDateTime.setText(intent.getStringExtra(DATE_MESSAGE));
 
 }
 

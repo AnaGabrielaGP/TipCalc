@@ -24,9 +24,6 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static com.example.gabygp.tipcalc.activities.ActivityDetails.BILL_MESSAGE;
-import static com.example.gabygp.tipcalc.activities.ActivityDetails.DATE_MESSAGE;
-import static com.example.gabygp.tipcalc.activities.ActivityDetails.TIP_MESSAGE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +33,10 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
     RecyclerView recyclerView;
 
     TipAdapter adapter;
+
+    public final static String BILL_MESSAGE = "me.tipcalc.billmessage";
+    public final static String TIP_MESSAGE = "me.tipcalc.tipmessage";
+    public final static String DATE_MESSAGE = "me.tipcalc.datemessage";
 
     public TipHistoryListFragment() {
         // Required empty public constructor
@@ -78,12 +79,18 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
     @Override
     public void onItemClick(TipRecord tipRecord) {
         //TODO Implementar la logica para llamar a una actividad enviandole la información de la propina
-        Intent intent = new Intent(getContext(),ActivityDetails.class);
-        intent.putExtra(BILL_MESSAGE,String.valueOf(tipRecord.getBill()));
-        intent.putExtra(TIP_MESSAGE,String.valueOf(tipRecord.getTip()));
-        intent.putExtra(DATE_MESSAGE,tipRecord.getDateFormated());
-        startActivity(intent);
+        //Intent intent = new Intent(getContext(), ActivityDetails.class);
+        //intent.putExtra(BILL_MESSAGE,String.valueOf(tipRecord.getBill()));
+        //intent.putExtra(TIP_MESSAGE,String.valueOf(tipRecord.getTip()));
+        //intent.putExtra(DATE_MESSAGE,tipRecord.getDateFormated());
+        //startActivity(intent);
         //Log.v("MENSAJE!!!!!", tipRecord.getDateFormated());
+
+        Intent intent = new Intent(getActivity(), ActivityDetails.class);
+        intent.putExtra(ActivityDetails.TIP_MESSAGE, tipRecord.getTip());
+        intent.putExtra(ActivityDetails.BILL_MESSAGE, tipRecord.getBill());
+        intent.putExtra(ActivityDetails.DATE_MESSAGE, tipRecord.getDateFormated());
+        startActivity(intent);
 
     }
 }
