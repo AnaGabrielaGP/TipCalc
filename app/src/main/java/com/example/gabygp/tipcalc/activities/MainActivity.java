@@ -12,14 +12,13 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.gabygp.tipcalc.R;
 import com.example.gabygp.tipcalc.TipCalcApp;
 import com.example.gabygp.tipcalc.fragments.TipHistoryListFragment;
 import com.example.gabygp.tipcalc.fragments.TipHistoryListFragmentListener;
-import com.example.gabygp.tipcalc.models.TipRecord;
+import com.example.gabygp.tipcalc.entity.TipRecord;
 
 import java.util.Date;
 

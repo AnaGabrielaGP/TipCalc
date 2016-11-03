@@ -1,6 +1,6 @@
 package com.example.gabygp.tipcalc.adapters;
 
-import com.example.gabygp.tipcalc.models.TipRecord;
+import com.example.gabygp.tipcalc.entity.TipRecord;
 
 /**
  * Created by gabygp07 on 24/10/16.

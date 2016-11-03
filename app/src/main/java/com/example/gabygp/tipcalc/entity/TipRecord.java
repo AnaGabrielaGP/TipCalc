@@ -1,4 +1,9 @@
-package com.example.gabygp.tipcalc.models;
+package com.example.gabygp.tipcalc.entity;
+
+import com.example.gabygp.tipcalc.bd.TipsDatabase;
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,10 +12,28 @@ import java.util.Date;
  * Created by gabygp07 on 13/10/16.
  */
 
+
+@Table(database = TipsDatabase.class)
 public class TipRecord {
+    @PrimaryKey(autoincrement = true)
+    private int id;
+
+    @Column
     private double bill;
+
+    @Column
     private int tipPercentage;
+
+    @Column
     private Date timestamp;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public double getBill() {
         return bill;
@@ -44,4 +67,5 @@ public class TipRecord {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM dd, yyyy HH:mm");
         return simpleDateFormat.format(timestamp);
     }
+
 }

@@ -6,20 +6,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.example.gabygp.tipcalc.R;
 import com.example.gabygp.tipcalc.activities.ActivityDetails;
 import com.example.gabygp.tipcalc.adapters.OnItemClickListener;
 import com.example.gabygp.tipcalc.adapters.TipAdapter;
-import com.example.gabygp.tipcalc.models.TipRecord;
-
-import java.util.ArrayList;
+import com.example.gabygp.tipcalc.entity.TipRecord;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
