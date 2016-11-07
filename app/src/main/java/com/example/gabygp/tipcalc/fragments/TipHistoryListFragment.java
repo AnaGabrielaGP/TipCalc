@@ -75,11 +75,6 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
     @Override
     public void onItemClick(TipRecord tipRecord) {
         //TODO Implementar la logica para llamar a una actividad enviandole la información de la propina
-        //Intent intent = new Intent(getContext(), ActivityDetails.class);
-        //intent.putExtra(BILL_MESSAGE,String.valueOf(tipRecord.getBill()));
-        //intent.putExtra(TIP_MESSAGE,String.valueOf(tipRecord.getTip()));
-        //intent.putExtra(DATE_MESSAGE,tipRecord.getDateFormated());
-        //startActivity(intent);
         //Log.v("MENSAJE!!!!!", tipRecord.getDateFormated());
 
         Intent intent = new Intent(getActivity(), ActivityDetails.class);
