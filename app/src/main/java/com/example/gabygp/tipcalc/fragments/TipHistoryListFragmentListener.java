@@ -7,6 +7,7 @@ import com.example.gabygp.tipcalc.entity.TipRecord;
  */
 
 public interface TipHistoryListFragmentListener {
+    void initList();
     void addToList(TipRecord record);
     void clearList();
 
