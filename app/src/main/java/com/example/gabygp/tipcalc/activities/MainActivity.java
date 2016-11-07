@@ -16,9 +16,13 @@ import android.widget.TextView;
 
 import com.example.gabygp.tipcalc.R;
 import com.example.gabygp.tipcalc.TipCalcApp;
+import com.example.gabygp.tipcalc.bd.TipsDatabase;
 import com.example.gabygp.tipcalc.fragments.TipHistoryListFragment;
 import com.example.gabygp.tipcalc.fragments.TipHistoryListFragmentListener;
 import com.example.gabygp.tipcalc.entity.TipRecord;
+import com.example.gabygp.tipcalc.utils.TipUtils;
+import com.raizlabs.android.dbflow.config.FlowConfig;
+import com.raizlabs.android.dbflow.config.FlowManager;
 
 import java.util.Date;
 
@@ -55,10 +59,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        initDB();
+
         TipHistoryListFragment fragment = (TipHistoryListFragment)getSupportFragmentManager().findFragmentById(R.id.fragmentList);
 
         fragment.setRetainInstance(true);
         fragmentListener = (TipHistoryListFragmentListener)fragment;
+    }
+
+    private void initDB() {
+        FlowManager.init(new FlowConfig.Builder(this).build());
+
+        FlowManager.getDatabase(TipsDatabase.class).getWritableDatabase();
     }
 
     @Override
@@ -97,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             record.setTipPercentage(tipPercentage);
             record.setTimestamp(new Date());
 
-            String strTip = String.format(getString(R.string.global_message_bill), record.getTip());
+            String strTip = String.format(getString(R.string.global_message_bill), TipUtils.getTip(record));
             fragmentListener.addToList(record);
 
             txtTip.setVisibility(View.VISIBLE);

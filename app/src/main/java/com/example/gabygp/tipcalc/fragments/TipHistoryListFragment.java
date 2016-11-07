@@ -15,6 +15,7 @@ import com.example.gabygp.tipcalc.activities.ActivityDetails;
 import com.example.gabygp.tipcalc.adapters.OnItemClickListener;
 import com.example.gabygp.tipcalc.adapters.TipAdapter;
 import com.example.gabygp.tipcalc.entity.TipRecord;
+import com.example.gabygp.tipcalc.utils.TipUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -82,10 +83,12 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
         //Log.v("MENSAJE!!!!!", tipRecord.getDateFormated());
 
         Intent intent = new Intent(getActivity(), ActivityDetails.class);
-        intent.putExtra(ActivityDetails.TIP_MESSAGE, tipRecord.getTip());
+
+        intent.putExtra(ActivityDetails.TIP_MESSAGE, TipUtils.getTip(tipRecord));
         intent.putExtra(ActivityDetails.BILL_MESSAGE, tipRecord.getBill());
-        intent.putExtra(ActivityDetails.DATE_MESSAGE, tipRecord.getDateFormated());
+        intent.putExtra(ActivityDetails.DATE_MESSAGE, TipUtils.getDateFormated(tipRecord));
         startActivity(intent);
+
 
     }
 }
