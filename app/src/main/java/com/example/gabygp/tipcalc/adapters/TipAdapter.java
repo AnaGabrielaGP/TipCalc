@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.gabygp.tipcalc.R;
 import com.example.gabygp.tipcalc.entity.TipRecord;
 import com.example.gabygp.tipcalc.utils.TipUtils;
+import com.raizlabs.android.dbflow.sql.language.Delete;
 import com.raizlabs.android.dbflow.sql.language.Select;
 
 import java.util.ArrayList;
@@ -17,6 +18,8 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+import static com.example.gabygp.tipcalc.entity.TipRecord_Table.timestamp;
 
 /**
  * Created by gabygp07 on 13/10/16.
@@ -61,6 +64,7 @@ public class TipAdapter extends RecyclerView.Adapter<TipAdapter.ViewHolder> {
     }
 
     public void init() {
+        //Delete(dataset);
         dataset = new Select().from(TipRecord.class).queryList();
     }
 
@@ -69,6 +73,8 @@ public class TipAdapter extends RecyclerView.Adapter<TipAdapter.ViewHolder> {
         record.save();
 
         dataset = new Select().from(TipRecord.class).queryList();
+
+        dataset = new Select().from(TipRecord.class).where().orderBy(timestamp, false) .queryList();
 
         notifyDataSetChanged();
     }

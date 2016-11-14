@@ -16,6 +16,7 @@ import com.example.gabygp.tipcalc.adapters.OnItemClickListener;
 import com.example.gabygp.tipcalc.adapters.TipAdapter;
 import com.example.gabygp.tipcalc.entity.TipRecord;
 import com.example.gabygp.tipcalc.utils.TipUtils;
+import com.raizlabs.android.dbflow.sql.language.Delete;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -64,6 +65,7 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
     @Override
     public void clearList() {
         adapter.clear();
+
     }
 
     private void initAdapter() {
