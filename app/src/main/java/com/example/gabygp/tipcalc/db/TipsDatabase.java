@@ -1,4 +1,4 @@
-package com.example.gabygp.tipcalc.bd;
+package com.example.gabygp.tipcalc.db;
 
 import com.raizlabs.android.dbflow.annotation.Database;
 

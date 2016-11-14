@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.example.gabygp.tipcalc.R;
 import com.example.gabygp.tipcalc.TipCalcApp;
-import com.example.gabygp.tipcalc.bd.TipsDatabase;
+import com.example.gabygp.tipcalc.db.TipsDatabase;
 import com.example.gabygp.tipcalc.fragments.TipHistoryListFragment;
 import com.example.gabygp.tipcalc.fragments.TipHistoryListFragmentListener;
 import com.example.gabygp.tipcalc.entity.TipRecord;
@@ -75,14 +75,13 @@ public class MainActivity extends AppCompatActivity {
         DBTearDown();
     }
 
-    private void DBTearDown() {
-        FlowManager.destroy();
-    }
-
     private void initDB() {
         FlowManager.init(new FlowConfig.Builder(this).build());
-
         FlowManager.getDatabase(TipsDatabase.class).getWritableDatabase();
+    }
+
+    private void DBTearDown() {
+        FlowManager.destroy();
     }
 
     @Override
@@ -129,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
     @OnClick(R.id.btnincrease)
     public void handleClickIncrease() {
         //Cuando des click a + debe llamar a handleTipChange y sumar 1

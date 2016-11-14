@@ -27,13 +27,9 @@ public class ActivityDetails extends AppCompatActivity {
     @Bind(R.id.activity_details)
     RelativeLayout activityDetails;
 
-    private String tipText;
-    private String billText;
-    private String dateText;
-
-    public final static String BILL_MESSAGE = "me.tipcalc.billmessage";
-    public final static String TIP_MESSAGE = "me.tipcalc.tipmessage";
-    public final static String DATE_MESSAGE = "me.tipcalc.datemessage";
+    public final static String TIP_KEY = "tip";
+    public final static String DATE_KEY = "timestamp";
+    public final static String BILL_TOTAL_KEY = "total";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +40,14 @@ public class ActivityDetails extends AppCompatActivity {
         Intent intent = getIntent();
 
 
-        billText = getString(R.string.tipdetail_message_bill).concat(intent.getStringExtra(TipHistoryListFragment.BILL_MESSAGE));
-        tipText = getString(R.string.tipdetail_message_tip).concat(intent.getStringExtra(TipHistoryListFragment.TIP_MESSAGE));
-        dateText = getString(R.string.tipdetail_message_date).concat(intent.getStringExtra(TipHistoryListFragment.DATE_MESSAGE));
+        String strTotal = String.format(getString(R.string.tipdetail_message_bill),
+                intent.getDoubleExtra(BILL_TOTAL_KEY, 0d));
+        String strTip = String.format(getString(R.string.global_message_bill),
+                intent.getDoubleExtra(TIP_KEY, 0d));
 
-        txtTotal.setText(billText);
-        txtTip.setText(tipText);
-        txtDateTime.setText(dateText);
+        txtDateTime.setText(intent.getStringExtra(DATE_KEY));
+        txtTotal.setText(strTotal);
+        txtTip.setText(strTip);
     }
 
 }

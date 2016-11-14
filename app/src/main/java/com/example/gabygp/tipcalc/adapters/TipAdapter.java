@@ -60,7 +60,7 @@ public class TipAdapter extends RecyclerView.Adapter<TipAdapter.ViewHolder> {
         return dataset.size();
     }
 
-    public void init(){
+    public void init() {
         dataset = new Select().from(TipRecord.class).queryList();
     }
 

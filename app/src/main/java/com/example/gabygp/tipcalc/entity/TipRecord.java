@@ -1,12 +1,11 @@
 package com.example.gabygp.tipcalc.entity;
 
-import com.example.gabygp.tipcalc.bd.TipsDatabase;
+import com.example.gabygp.tipcalc.db.TipsDatabase;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**

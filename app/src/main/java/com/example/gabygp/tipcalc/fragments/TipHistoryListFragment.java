@@ -30,10 +30,6 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
 
     TipAdapter adapter;
 
-    public final static String BILL_MESSAGE = "me.tipcalc.billmessage";
-    public final static String TIP_MESSAGE = "me.tipcalc.tipmessage";
-    public final static String DATE_MESSAGE = "me.tipcalc.datemessage";
-
     public TipHistoryListFragment() {
         // Required empty public constructor
     }
@@ -84,9 +80,9 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
 
         Intent intent = new Intent(getActivity(), ActivityDetails.class);
 
-        intent.putExtra(ActivityDetails.TIP_MESSAGE, TipUtils.getTip(tipRecord));
-        intent.putExtra(ActivityDetails.BILL_MESSAGE, tipRecord.getBill());
-        intent.putExtra(ActivityDetails.DATE_MESSAGE, TipUtils.getDateFormated(tipRecord));
+        intent.putExtra(ActivityDetails.TIP_KEY, TipUtils.getTip(tipRecord));
+        intent.putExtra(ActivityDetails.BILL_TOTAL_KEY, tipRecord.getBill());
+        intent.putExtra(ActivityDetails.DATE_KEY, TipUtils.getDateFormated(tipRecord));
         startActivity(intent);
 
 
